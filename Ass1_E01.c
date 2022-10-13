@@ -1,5 +1,8 @@
 // Example 1
-
+	// INPUT: N=5, S=12, A[]={1,2,3,7,5}
+	// OUTPUT: 2	4
+	// CONSTRAINTS: T=On, S=On
+		
 #include <stdio.h>
 #define max 20
 int main()
@@ -15,19 +18,17 @@ int main()
 	for(int i = 0; i < size; i++){
 		scanf("%d", &arr[i]);
 	}
-
-	int count = 0;
-	for(int i = 0; i < size; i++){
-		target += arr[i];
-		
-		if (target == s){
-			printf("%d	%d", i-count, i);
+	
+	int in = 0, out = 0;
+	while (in <= out){
+		if(target < s)
+			target += arr[out++];
+		else if(target > s)
+			target -= arr[in++];
+		else if(target == s){
+			printf("\n%d	%d", in+1, out);
 			break;
-		}
-		else if (target > s){
-			target -= arr[count];
-			count++;
-		}
-	}			
+		}		
+	}
 	return 0;
-}	
+}
