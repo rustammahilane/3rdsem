@@ -1,7 +1,7 @@
 // Subarray with given sum
 	// INPUT: N=5, S=12, A[]={1,2,3,7,5}
 	// OUTPUT: 2	4
-	// CONSTRAINTS: T=On, S=On
+	// CONSTRAINTS: T=On, S=O1
 		
 #include <stdio.h>
 #define max 20
@@ -19,6 +19,7 @@ int main()
 		scanf("%d", &arr[i]);
 	}
 	
+	// in and out are indices of initial and end position of subarray
 	int in = 0, out = 0;
 	while (in <= out){
 		if(target < s)
