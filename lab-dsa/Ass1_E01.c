@@ -1,4 +1,4 @@
-// Example 1
+// Subarray with given sum
 	// INPUT: N=5, S=12, A[]={1,2,3,7,5}
 	// OUTPUT: 2	4
 	// CONSTRAINTS: T=On, S=On
