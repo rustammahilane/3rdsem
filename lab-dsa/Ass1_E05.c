@@ -15,11 +15,11 @@ int main()
     p = (int*)malloc(n*sizeof(int));
     printf("Enter elements:");
     for(int i = 0; i < n; i++)
-    scanf("%d", &p[i]);
+        scanf("%d", &p[i]);
 
-    // int lead[] = leaders(n,p);
-    for(int i = 0; i < n; i++)
-    printf("%d\n", *(leaders(n,p)+i));
+    int *t = leaders(n,p);
+    for(int i = k-1; i >= 0; i--)
+        printf("%d ", *(t+i));
     return 0;
 }
 
@@ -27,20 +27,13 @@ int* leaders(int size, int A[size]){
     int *ptr;
     ptr = (int*)calloc(size,sizeof(int));
 
+    //  right_sum is sum of elements to the right
+    //  k is globally declared
     int right_sum=0;
     for(int i = size-1; i >= 0; i--){
         if(right_sum <= A[i])
-        ptr[i] = A[i];
+        ptr[k++] = A[i];
         right_sum += A[i];
-    }
-
-    for(int i = 0; i < size; i++){
-        if(ptr == 0){
-            ptr[i] = ptr[i+1];
-
-        }
-        else
-            break;
     }
     return ptr;
 }
