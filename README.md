@@ -4,4 +4,4 @@ This repo is enclosed with the **Official Assignments and Projects** i.e CSE Dep
 
 ### DSA Lab
 
-[Assignment 1](lab-dsa/assign1.pdf)
+- [Assignment 1](lab-dsa/assign1.pdf)
