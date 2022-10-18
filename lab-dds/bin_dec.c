@@ -13,8 +13,7 @@ int main()
 	
 	while (temp){
 		int last_dig = temp % 10;
-		dec = dec + last_dig*pow(2, weight);
-		weight++;
+		dec = dec + last_dig*pow(2, weight++);
 		temp = temp / 10;
 	}
 	printf("dec: %d", dec);

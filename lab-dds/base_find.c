@@ -13,7 +13,7 @@ int main()
 
     printf("x  y\n");
     int temp1=num1, temp2=num2;
-    for (int i = 1; i < 10; i++){
+    for (int i = 1; i <= 10; i++){
         for(int j = 1; j <= 10; j++){
 
             int weight = 0;
