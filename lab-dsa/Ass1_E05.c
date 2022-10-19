@@ -1,6 +1,7 @@
 // Leaders in an array
     // INPUT: N = 6, A[] = {16,17,4,5,3,2}
-    // OUTPUT: 17 5 2
+    // OUTPUT: 17 5 3 2
+    // CONSTRAINTS: T = On, aS = On
 
 #include <stdio.h>
 #include <stdlib.h>
