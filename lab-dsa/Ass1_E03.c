@@ -10,9 +10,9 @@ int main()
 {
     int n;
     int *p;
-    p = (int*)malloc((n-1)*sizeof(int));
     printf("Enter n:");
     scanf("%d", &n);
+    p = (int*)malloc((n-1)*sizeof(int));
     printf("Enter elements:");
     for(int i = 0; i < n-1; i++)
     scanf("%d", &p[i]);

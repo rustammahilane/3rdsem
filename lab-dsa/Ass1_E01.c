@@ -4,30 +4,31 @@
 	// CONSTRAINTS: T=On, S=O1
 		
 #include <stdio.h>
-#define max 20
+#include <stdlib.h>
 int main()
 {
-	int arr[max], s, size;
+	int *p, s, n;
 	int target = 0;
 	printf("Enter size of arr:");
-	scanf("%d", &size);
+	scanf("%d", &n);
+	p = (int*)malloc(n*sizeof(int));
 	printf("Enter sum: ");
 	scanf("%d", &s);
 	
 	printf("Enter arr elements: ");
-	for(int i = 0; i < size; i++){
-		scanf("%d", &arr[i]);
+	for(int i = 0; i < n; i++){
+		scanf("%d", &p[i]);
 	}
 	
 	// in and out are indices of initial and end position of subarray
 	int in = 0, out = 0;
 	while (in <= out){
 		if(target < s)
-			target += arr[out++];
+			target += p[out++];
 		else if(target > s)
-			target -= arr[in++];
+			target -= p[in++];
 		else if(target == s){
-			printf("\n%d	%d", in+1, out);
+			printf("%d %d", in+1, out);
 			break;
 		}		
 	}
