@@ -7,7 +7,7 @@
 #include <stdlib.h>
 int mergesort(int arr[], int temp[], int l, int r);
 int merge(int arr[], int temp[], int l, int m, int r);
-int countmergesort(int n, int arr[]){
+int returncount(int n, int arr[]){
     int *temp;
     temp = (int*)malloc(n*sizeof(int));
     return mergesort(arr, temp, 0, n-1);
@@ -51,6 +51,6 @@ int main()
     int p[n];
 	for(int i = 0; i < n; i++)
 		scanf("%d", &p[i]);
-	printf("%d",countmergesort(n, p));
+	printf("%d",returncount(n, p));
 	return 0;
 }
