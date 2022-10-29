@@ -1,24 +1,26 @@
-// Write a program to perform the ‘x’ and ‘x-1’complemention of (number) x.
-// considering x <= 10
-#include <stdio.h>
-#include <string.h>
-
+// nice
+#include<stdio.h>
+#include<math.h>
+int decimalTo(int n,int x)
+{
+    int i,num=0;
+    for(i=0;n>=x;n/=x){
+        num+=(n%x)*pow(10,i);
+        i++;
+    }
+    num+=(n)*pow(10,i);
+    return num;
+}
 int main()
 {
-    char str[10];
-    int x;
-    printf("Enter num:");
-    scanf("%s", &str);
-    printf("Enter x: ");
-    scanf("%d", &x);
-
-    char eq[] = {'0','1','2','3','4','5','6','7','8','9'};
-    char r_1[strlen(str)];
-
-    for(int i = 0; i < strlen(str); i++){
-        int temp = str[i] - '0';
-        r_1[i] = eq[x-1]-temp;
-    }
-    printf("%s",r_1);
-    return 0;
+    int num,x,i,n=0,r;
+    printf("Enter the number: ");
+    scanf("%d",&num);
+    printf("Enter the radix(2-10): ");
+    scanf("%d",&x);
+    for(i=0;num>0;num/=10)
+    n+=(num%10)*pow(x,i++);
+    r=pow(x,i)-n;
+    printf("%d's compliment: %d\n",x,decimalTo(r,x));
+    printf("%d's compliment: %d\n",x-1,decimalTo(r-1,x));
 }
