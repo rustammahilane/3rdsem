@@ -2,7 +2,6 @@
 
 #include <stdio.h>
 #include <math.h>
-
 int bin_to_dec(int binary){
     int weight = 0, decimal = 0;
     while(binary){
@@ -11,7 +10,6 @@ int bin_to_dec(int binary){
     }
     return decimal;
 }
-
 int dec_to_bin(int decimal){
     int binary = 0, weight = 0;
     while(decimal){
@@ -20,7 +18,6 @@ int dec_to_bin(int decimal){
     }
     return binary;
 }
-
 int main()
 {
     int bin1, bin2;
@@ -36,5 +33,4 @@ int main()
     printf("Difference: %d\n", dec_to_bin(diff));
     printf("Multiplication: %d\n", dec_to_bin(multi));
     printf("Division: %d\n", dec_to_bin(div));
-    
 }

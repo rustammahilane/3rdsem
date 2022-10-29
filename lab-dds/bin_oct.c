@@ -1,4 +1,4 @@
-// program to convert binary to decimal number system
+// program to convert binary to octal number system
 
 #include <stdio.h>
 #include <math.h>
@@ -25,6 +25,6 @@ int main()
         t = t*10;
         dec = dec/8;
     }
-	printf("oct: %d", oct);
+	printf("oct: %d\n", oct);
 	return 0;
 }
