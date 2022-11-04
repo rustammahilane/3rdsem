@@ -5,3 +5,4 @@ This repo is enclosed with the **Assignments and Projects** i.e CSE Department p
 ### DSA Lab
 
 - [Assignment 1](lab-dsa/assignment-1)
+- [Assignment 2](lab-dsa/assignment-2)
