@@ -1,19 +1,19 @@
 // select r from n
 
 #include <stdio.h>
-int fact(int N){
-	if(N == 1)
-		return 1;
-	else
-		return fact(N-1)*N;
-}
 int nCr(int N, int R){
-	return fact(N) / (fact(R) * fact(N-R));
+        if(N == R) return 1;
+        if(R == 1) return N;
+        if(N < R) return 0;
+        return nCr(N-1, R) + nCr(N-1, R-1);
 }
 int main()
 {
-	int n,r;
-	scanf("%d%d", &n, &r);
-	printf("%d", nCr(n,r));
-	return 0;
+        int n,r;
+        printf("Enter total no of objects and to select respectively:");
+        scanf("%d%d", &n, &r);
+        printf("Possible ways: ");
+        printf("%d", nCr(n,r));
+        return 0;
 }
+
