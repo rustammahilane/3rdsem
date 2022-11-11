@@ -1,0 +1,12 @@
+# ignore files that matches /lab-dsa/assignment<something>/<all>
+/lab-dsa/assignment*/*
+# don't ignore .c files in above mentioned directories
+!/lab-dsa/assignment-1/*.c
+!/lab-dsa/assignment-2/*.c
+!/lab-dsa/assignment-3/*.c
+
+# ignore files that matches /lab-dds/<something>module/<all>
+/lab-dds/*module/*
+# don't ignore .c files in above mentioned directories
+!/lab-dds/1module/*.c
+!/lab-dds/3module/*.v
