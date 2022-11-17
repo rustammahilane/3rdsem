@@ -6,7 +6,8 @@ struct singlylinked{
     struct singlylinked *next;
 }*head;
 typedef struct singlylinked node;
-
+int getdata();
+int getposition();
 node* create(int data);
 void insert_at_0(int data);
 void display(node *head);
@@ -19,40 +20,52 @@ int node_count();
 
 int main()
 {   
-    head = (node*)malloc(sizeof(node));
-    head->data = 5;
-    head->next = NULL;
-    insert_at_0(10);
-    insert_at_1(20);
-    delete(2);
-    insert(7,1);
-    insert(15, 2);
-    display(head);
-    delete_at_0();
-    delete_at_1();
-    display(head);
+
+    int choice = 0;
+    do{
+        printf("------singly-linked-list-------\n");
+        printf("1.Insert at end\n2.Insert at first\n3.Insert at position\n"
+        "4.Delete at end\n5.Delete at first\n6.Delete at position\n7.Display\n0.Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+        switch(choice){
+            case 1: 
+                insert_at_1(getdata());
+                break;
+            case 2:
+                insert_at_0(getdata());
+                break;
+            case 3:
+                insert(getdata(), getposition());
+                break;
+            case 4:
+                delete_at_1();
+                break;
+            case 5:
+                delete_at_0();
+                break;
+            case 6:
+                delete(getposition());
+                break;
+            case 7:
+                display(head);
+                break;
+            default:
+                printf("Invalid input! terminating...");
+                choice = 0;
+                break;
+        }
+        
+    }while(choice != 0);
+    return 0;
 }
 
-node* create(int data){
-    struct singlylinked *new;
-    new = (node*)malloc(sizeof(node));
-    new->data = data;
-    new->next = NULL;
-    return new;
-}
-int node_count(){
-    node *ptr = head;
-    int no_of_nodes = 0;
-    while(ptr != NULL){
-        no_of_nodes++;
-        ptr = ptr->next;
-    }
-    return no_of_nodes;
-}
+
 void insert_at_0(int data){
-
-    if(head == NULL)
+    if(head == NULL){
+        head = (node*)malloc(sizeof(node));
         head = create(data);
+    }
     else{
         node *ptr;
         ptr = (node*)malloc(sizeof(node));
@@ -60,6 +73,18 @@ void insert_at_0(int data){
         ptr->next = head;
         head = ptr;
     }
+}
+int getdata(){
+    int num;
+    printf("Enter data:");
+    scanf("%d", &num);
+    return num;
+}
+int getposition(){
+    int pos;
+    printf("Enetr position:");
+    scanf("%d", &pos);
+    return pos;
 }
 void display(node *head){
     node *ptr = head;
@@ -70,8 +95,10 @@ void display(node *head){
     printf("\n");
 }
 void insert_at_1(int data){
-    if(head == NULL)
+    if(head == NULL){
+        head = (node*)malloc(sizeof(node));
         head = create(data);
+    }
     else{
         node *ptr = (node*)malloc(sizeof(node));
         ptr = create(data);
@@ -82,6 +109,9 @@ void insert_at_1(int data){
     }
 }
 void insert(int data, int pos){
+    if(pos == 0)
+    insert_at_0(data);
+    
     node* ptr =  (node*)malloc(sizeof(node));
     ptr = head;
     while(--pos){
@@ -116,6 +146,7 @@ void delete_at_0(){
 void delete_at_1(){
     node *ptr, *ptr1;
     ptr = (node*)malloc(sizeof(node));
+    ptr1 = (node*)malloc(sizeof(node));
     ptr = head;
     while(ptr->next != NULL){
         ptr1 = ptr;
@@ -123,4 +154,20 @@ void delete_at_1(){
     }
     ptr1->next = NULL;
     free(ptr);
+}
+node* create(int data){
+    node *new;
+    new = (node*)malloc(sizeof(node));
+    new->data = data;
+    new->next = NULL;
+    return new;
+}
+int node_count(){
+    node *ptr = head;
+    int no_of_nodes = 0;
+    while(ptr != NULL){
+        no_of_nodes++;
+        ptr = ptr->next;
+    }
+    return no_of_nodes;
 }
