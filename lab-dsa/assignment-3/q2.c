@@ -7,7 +7,18 @@ struct doubly_linked{
     struct doubly_linked *prev;
 }*head;
 typedef struct doubly_linked node;
-
+int getdata(){
+    int num;
+    printf("Enter data:");
+    scanf("%d", &num);
+    return num;
+}
+int getposition(){
+    int pos;
+    printf("Enetr position:");
+    scanf("%d", &pos);
+    return pos;
+}
 node* create(int data);
 void insert_at_0(int data);
 void display(node *head);
@@ -17,24 +28,46 @@ void delete(int pos);
 void delete_at_0();
 void delete_at_1();
 int node_count();
-
+int node_count();
 int main()
 {   
-    head = (node*)malloc(sizeof(node));
-    head->data = 10;
-    head->next = NULL;
-    head->prev = NULL;
-    insert_at_0(5);
-    insert_at_1(20);
-    insert(15, 2);
-    display(head);
-    delete(2);
-    display(head);
-    insert(7,3);
-    display(head);
-    delete_at_0();
-    delete_at_1();
-    display(head);
+    int choice = 0;
+    do{
+        printf("------doubly-linked-list-------\n");
+        printf("1.Insert at end\n2.Insert at first\n3.Insert at position\n"
+        "4.Delete at end\n5.Delete at first\n6.Delete at position\n7.Display\n0.Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+        switch(choice){
+            case 1: 
+                insert_at_1(getdata());
+                break;
+            case 2:
+                insert_at_0(getdata());
+                break;
+            case 3:
+                insert(getdata(), getposition());
+                break;
+            case 4:
+                delete_at_1();
+                break;
+            case 5:
+                delete_at_0();
+                break;
+            case 6:
+                delete(getposition());
+                break;
+            case 7:
+                display(head);
+                break;
+            default:
+                printf("Invalid input! terminating...");
+                choice = 0;
+                break;
+        }
+        
+    }while(choice != 0);
+    return 0;
 }
 
 node* create(int data){
@@ -68,9 +101,17 @@ void insert_at_0(int data){
 }
 void display(node *head){
     node *ptr = head;
+    node *ptr2 = head;
+    printf("using next:");
     while(ptr != NULL){
         printf("%d ", ptr->data);
+        ptr2 = ptr;
         ptr = ptr->next;
+    }
+    printf("\nusing prev:");
+    while(ptr2 != NULL){
+        printf("%d ", ptr2->data);
+        ptr2 = ptr2->prev;
     }
     printf("\n");
 }
@@ -99,7 +140,6 @@ void insert(int data, int pos){
     new->prev = ptr;
     (ptr->next)->prev = new;
     ptr->next = new;
-    insertion n-1 position not happen
 }
 void delete(int pos){
     if(head == NULL)
@@ -107,7 +147,7 @@ void delete(int pos){
     else{
         node *ptr = (node*)malloc(sizeof(node));
         ptr = head;
-        while(--pos)
+        while(pos--)
             ptr = ptr->next;
         (ptr->prev)->next = ptr->next;
         (ptr->next)->prev = ptr->prev;
@@ -117,6 +157,8 @@ void delete(int pos){
 void delete_at_0(){
     if(node_count() == 0)
         printf("already empty.");
+    else if(node_count() == 1)
+        head = NULL;
     else{
         node* ptr;
         ptr = head;
@@ -126,9 +168,16 @@ void delete_at_0(){
     }
 }
 void delete_at_1(){
+    if(node_count() == 0)
+        printf("already empty.");
+    else if(node_count() == 1)
+        head = NULL;
+    else{
     node *ptr = head;
     while(ptr->next != NULL)
         ptr = ptr->next;
     (ptr->prev)->next = NULL;
     free(ptr);
+
+    }
 }
