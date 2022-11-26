@@ -8,7 +8,7 @@
   Some algorithm questions.
 - [Assignment 2](lab-dsa/assignment-2)
   Special matrices and their memory allocations, tower of hanoi, 8 queens.
-- [Assignnment 3](lad-dsa/assignment-3)
+- [Assignnment 3](lab-dsa/assignment-3)
   Linked Lists and their operations.
 - [Assignment 4](lab-dsa/assignment-4)
   Stack, Queue, Infix-Postfix, Sorting, Searching.
