@@ -1,4 +1,4 @@
-// halfadder
+// half subtracter
 module halfsub(
     output s, c_out,
     input a, b
