@@ -3,7 +3,7 @@
 # don't ignore .c files in above mentioned directories
 !/lab-dsa/assignment-1/*.c
 !/lab-dsa/assignment-2/*.c
-!/lab-dsa/assignment-3/*.c
+# !/lab-dsa/assignment-3/*.c
 !/lab-dsa/assignment-4/*.c
 # ignore files that matches /lab-dds/<something>module/<all>
 /lab-dds/*module/*
