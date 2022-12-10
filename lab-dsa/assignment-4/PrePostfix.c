@@ -2,61 +2,76 @@
 #include <stdio.h>
 #include <stdlib.h>
 struct linked {
-	int data;
+	char data;
 	struct linked* next;
-}*head = NULL;
+
+};
 typedef struct linked node;
+
 node* create(int data) {
 	node* ptr = (node*)malloc(sizeof(node));
 	ptr->data = data;
 	ptr->next = NULL;
 	return ptr;
 }
-void insert(int data) {
-	if (head == NULL) {
-		head = (node*)malloc(sizeof(node));
-		head = create(data);
+
+node* push(node *top, char data) {
+	if (top == NULL) {
+		top = (node*)malloc(sizeof(node));
+		top = create(data);
 	}
 	else {
 		node* ptr = (node*)malloc(sizeof(node));
-		ptr = head;
-		while (ptr->next != NULL) {
-			ptr = ptr->next;
-		}
-		ptr->next = create(data);
+		ptr = create(data);
+		ptr->next = top;
+		top = ptr;
 	}
+	return top;
 }
-void display() {
-	if (head == NULL)
-		printf("Empty!");
-	else {
-		node* ptr = (node*)malloc(sizeof(node));
-		ptr = head;
-		while (ptr != NULL) {
-			printf("%d ", ptr->data);
-			ptr = ptr->next;
+
+node* pop(node *top){
+	if(top->next != NULL){
+		node *ptr = (node*)malloc(sizeof(node));
+		ptr = top;
+		top = top->next;
+		free(ptr);
+	}
+	else{
+		top = NULL;
+	}		
+}
+
+void display(node *top) {
+
+}
+
+node* postfix(node* operand, char str[]){
+	node *operator;
+	for(int i = 0; str[i] != '\0'; i++){
+		switch(str[i]){
+			case '(':
+			case '-':
+			case '+':
+			case '/':
+			case '*':
+			case '%': operator = push(operator, str[i]);
+						break;
+			case ')': operand = push(operand, operator->data);
+						operator = pop(operator);
+						break;
+			default : operand = push(operand, str[i]);
+						break;
 		}
 	}
-	printf("\n");
+	return operand;
 }
+
 int main() {
-	short int choice = 0;
-	do {
-		printf("-------pre to post-------\n");
-		printf("1. Insert\n2. Display\n0. Exit\n");
-		printf("Enter your choice: ");
-		scanf("%d", &choice);
-		switch (choice) {
-		case 1:
-			int num;
-			scanf(" %d", &num);
-			insert(num);
-			break;
-		case 2:
-			display();
-			break;
-		default:
-			break;
-		}
-	} while (choice != 0);
+	char str[50];
+	node *post;
+	printf("Enter paranthesized infix notation:");
+	printf("hi\n");
+	scanf("%s", str);
+	printf("bye");
+	post = postfix(post, str);
 }
