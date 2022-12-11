@@ -5,22 +5,24 @@
 struct queue{
 	int size;
 	int front, rear;
-	int *Q;
+	int *Q ;
 };
 typedef struct queue node;
 
 void create(node *arr,int size){
 	arr->size = size;
-	arr->front = arr->rear = -1;
+	arr->front = arr->rear = 0;
 	arr->Q = (int*)malloc(arr->size*sizeof(int));
 }
 
 void enqueue(node *arr){
-	if(arr->rear == arr->size -1)
-		printf("Queue full!\n");
+	if((arr->rear == arr->size && arr->front == 0) || (arr->rear + 1 == arr->front))
+		printf("Queue full!\n"); 
 	else{
 		int num;
-		scanf(" %d", &num);
+		scanf("%d", &num);
+		if(arr->rear == arr->size)
+			arr->rear = -1;
 		arr->rear++;
 		arr->Q[arr->rear] = num;
 	}
@@ -29,29 +31,40 @@ void enqueue(node *arr){
 void dequeu(node *arr){
 	if(arr->front == arr->rear){
 		printf("Queue is empty!\n");
-
 	}
 	else{ 
+		if(arr->front == arr->size)
+			arr->front = -1;
 		arr->front++;
 	}
 }
 
 void display(node *arr){
 	if(arr->front == arr->rear)
-		printf("Queue is empty!");
+		printf("Queue is empty!\n");
 	else{
-		for(int i = arr->front +1; i <= arr->rear; i++)
-			printf("%d ",arr->Q[i]);
+		int i = arr->front;
+		if(arr->front < arr->rear){
+			while(i < arr->rear)
+			printf("%d ",arr->Q[++i]);
+		}
+		else{
+			while(i < arr->size)	
+				printf("%d ",arr->Q[++i]);
+			i = -1;
+			while(i < arr->rear)
+				printf("%d ",arr->Q[++i]);
+		}
 		printf("\n");
 	}	
 }
 
 int main() {
 	node *a;
-	unsigned int size;
+	int size;
 	printf("Enter size of Queue:");
-	scanf("%u", &size);
-	create(a, size+1);
+	scanf("%d", &size);
+	create(a, size );
 	short int choice = 0;
 	do {
 		printf("-------queue-array------\n");
