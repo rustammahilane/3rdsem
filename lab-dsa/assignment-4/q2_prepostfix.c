@@ -1,15 +1,16 @@
 // convert infix to post and prefix
 #include <stdio.h>
 #include <stdlib.h>
-struct linked {
+struct stack {
 	char data;
-	struct linked* next;
+	struct stack *next;
 
 };
-typedef struct linked node;
+typedef struct stack node;
 
-node* create(int data) {
-	node* ptr = (node*)malloc(sizeof(node));
+node* create(char data) {
+	node* ptr;
+	ptr = (node*)malloc(sizeof(node));
 	ptr->data = data;
 	ptr->next = NULL;
 	return ptr;
@@ -18,7 +19,8 @@ node* create(int data) {
 node* push(node *top, char data) {
 	if (top == NULL) {
 		top = (node*)malloc(sizeof(node));
-		top = create(data);
+		top->data = data;
+		top->next = NULL;
 	}
 	else {
 		node* ptr = (node*)malloc(sizeof(node));
@@ -41,12 +43,27 @@ node* pop(node *top){
 	}		
 }
 
-void display(node *top) {
+int node_count(node *top){
+	int count;
+	while(top != NULL){
+		count++;
+		top = top->next;
+	}
+	return count;
+}
 
+// ERROR at ptr = ptrnext
+void display(node *top) {
+	node *ptr = (node*)malloc(sizeof(node));
+	ptr = top;
+	while(ptr != NULL){
+		printf("%c", ptr->data);
+		ptr = ptr->next;
+	}
 }
 
 node* postfix(node* operand, char str[]){
-	node *operator;
+	node *operator = NULL;
 	for(int i = 0; str[i] != '\0'; i++){
 		switch(str[i]){
 			case '(':
@@ -74,4 +91,6 @@ int main() {
 	scanf("%s", str);
 	printf("bye");
 	post = postfix(post, str);
+	// display(post);
+	printf("%d", node_count(post));
 }
