@@ -12,6 +12,8 @@
   Linked Lists and their operations.
 - [Assignment 4](lab-dsa/assignment-4)
   Stack, Queue, Infix-Postfix, Sorting, Searching.
+- [Assignment 5](lab-dsa/assignment-5)
+  Binary Trees, Heapsort.
 
 ### DDS Lab
 
