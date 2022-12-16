@@ -21,3 +21,4 @@
   Number systems using C.
 - [Module 3](lab-dds/3module/)
   Verilog source files.
+By Rustam
