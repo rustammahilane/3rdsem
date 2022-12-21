@@ -19,8 +19,8 @@ module test;
 reg a,b,c;
 wire s,d;
 
-mux sum(0,1,1,0,1,0,0,1,a,b,c,s);
-mux carry(0,1,1,1,0,0,0,1,a,b,c,d);
+mux diff(0,1,1,0,1,0,0,1,a,b,c,s);
+mux borrow(0,1,1,1,0,0,0,1,a,b,c,d);
 initial begin
     $display("full subtracter using 8:1 mux");
     $monitor("%b %b %b   %b %b",a,b,c,s,d);
