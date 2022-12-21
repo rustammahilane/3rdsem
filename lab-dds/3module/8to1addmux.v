@@ -10,7 +10,7 @@ assign y4 = a & ~b & ~c;
 assign y5 = a & ~b & c;
 assign y6 = a & b & ~c;
 assign y7 = a & b & c;
-assign out = y1 | y2|y3|y4|y5|y6|y7;
+assign out = y0|y1|y2|y3|y4|y5|y6|y7;
 endmodule
 
 //testbench
@@ -19,7 +19,7 @@ reg a,b,c;
 wire s,d;
 
 mux sum(0,1,1,0,1,0,0,1,a,b,c,s);
-mux car(0,0,0,1,0,1,1,1,a,b,c,d);
+mux carry(0,0,0,1,0,1,1,1,a,b,c,d);
 initial begin
     $display("full adder using 8:1 mux");
     $monitor("%b %b %b   %b %b",a,b,c,s,d);
